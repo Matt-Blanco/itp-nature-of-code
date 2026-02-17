@@ -10,13 +10,13 @@ let startAngle = 0;
 let deltaAngle = 0.2;
 
 const lines = [
-    "abcdefghijk",
-    "lmnopqrstu",
-    "vwxyz"
+    "abcdefghi",
+    "jklmnopqr",
+    "stuvwxyz"
 ];
 
 function preload() {
-  font = loadFont("/assets/InclusiveSans-Regular.ttf");
+  font = loadFont("/assets/MonaspaceKrypton-Regular.otf");
 }
 
 function setup() {
