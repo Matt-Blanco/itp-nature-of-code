@@ -16,7 +16,7 @@ const lines = [
 ];
 
 function preload() {
-  font = loadFont("/assets/MonaspaceKrypton-Regular.otf");
+  font = loadFont("http://mattblanco.me/itp-nature-of-code/04_oscillators/assets/MonaspaceKrypton-Regular.otf");
 }
 
 function setup() {
