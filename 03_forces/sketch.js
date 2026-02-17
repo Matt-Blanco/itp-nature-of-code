@@ -13,7 +13,6 @@ function setup() {
 function draw() {
   let pixelRange = [];
   camera.loadPixels();
-  // pixelDensity(0.5);
   let pixels = camera.pixels;
   for (let y = 0; y < height; y += boxSize) {
     for (let x = 0; x < width; x += boxSize) {
@@ -70,10 +69,10 @@ class PixelForce {
     this.pos = createVector(x, y);
     this.size = boxSize;
     this.brightness = floor(brightness(this.pixel));
-    this.saturation = floor(saturation(this.pixel));
+    this.saturation = floor(hue(this.pixel));
     this.force = createVector(
       map(this.saturation, 0, 100, -1, 1),
-      map(this.brightness, 0, 100, 1, -1),
+      map(this.brightness, 0, 360, 1, -1),
     );
   }
 
@@ -82,11 +81,6 @@ class PixelForce {
     fill(this.brightness);
     rect(this.pos.x, this.pos.y, boxSize, boxSize);
     fill(0);
-    // text(
-    //   this.brightness,
-    //   this.pos.x + this.size / 2 - 10,
-    //   this.pos.y + this.size / 2,
-    // );
 
     if (showForce) {
       this.showVector();
@@ -94,22 +88,29 @@ class PixelForce {
   }
 
   showVector() {
-    const p1 = createVector(
-      this.pos.x + this.size / 2,
-      this.pos.y + this.size / 2,
-    );
+    push();
+    translate(this.pos.x + this.size / 2, this.pos.y + this.size / 2);
+
     const p2 = createVector(
-      p1.x + map(this.force.x, -1, 1, -(this.size / 2), this.size / 2),
-      p1.y + map(this.force.y, -1, 1, -(this.size / 2), this.size / 2),
+      map(this.force.x, -1, 1, -(this.size / 2), this.size / 2),
+      map(this.force.y, -1, 1, -(this.size / 2), this.size / 2),
     );
     stroke(255, 125);
     strokeWeight(1);
-    line(p1.x, p1.y, p2.x, p2.y);
+    line(0, 0, p2.x, p2.y);
+
+    // arrow head?
+    // vector.heading() gets you the angle of the angle
+    const arrow1 = p2.copy().div(2);
+    const arrow2 = p2.copy().div(2);
+
+    line(p2.x, p2.y, arrow1.rotate(PI / 8).x, arrow1.rotate(PI / 8).y);
+    line(p2.x, p2.y, arrow2.rotate((15 * PI) / 8).x, arrow2.rotate((15 * PI) / 8).y);
+    pop();
   }
 }
 
 class Ball {
-
   showTrail = true;
 
   constructor(x, y, r) {
@@ -142,13 +143,12 @@ class Ball {
     circle(this.pos.x, this.pos.y, this.r);
 
     if (this.showTrail) {
-      this.trail.forEach(pos => {
+      this.trail.forEach((pos) => {
         strokeWeight(2);
         stroke(255);
-        point(pos.x, pos.y)
-      })
+        point(pos.x, pos.y);
+      });
     }
-
   }
 
   apply(force) {
