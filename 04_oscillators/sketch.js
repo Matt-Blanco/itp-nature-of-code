@@ -9,14 +9,12 @@ let amplitude = 25;
 let startAngle = 0;
 let deltaAngle = 0.2;
 
-const lines = [
-    "abcdefghi",
-    "jklmnopqr",
-    "stuvwxyz"
-];
+const lines = ["abcdefghi", "jklmnopqr", "stuvwxyz"];
 
 function preload() {
-  font = loadFont("https://mattblanco.me/itp-nature-of-code/04_oscillators/assets/MonaspaceKrypton-Regular.otf");
+  font = loadFont(
+    "https://mattblanco.me/itp-nature-of-code/04_oscillators/assets/MonaspaceKrypton-Regular.otf",
+  );
 }
 
 function setup() {
