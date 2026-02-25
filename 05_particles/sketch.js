@@ -5,10 +5,10 @@ let emitterIndex = 0;
 
 function preload() {
   font = loadFont(
-    "https://mattblanco.me/itp-nature-of-code/04_oscillators/data/DidactGothic-Regular.ttf",
+    "https://mattblanco.me/itp-nature-of-code/05_particles/data/DidactGothic-Regular.ttf",
   );
 
-  text = loadStrings("https://mattblanco.me/itp-nature-of-code/04_oscillators/data/text.txt");
+  text = loadStrings("https://mattblanco.me/itp-nature-of-code/05_particles/data/text.txt");
 }
 
 function setup() {
