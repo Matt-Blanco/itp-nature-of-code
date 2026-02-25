@@ -5,7 +5,7 @@ let emitterIndex = 0;
 
 function preload() {
   font = loadFont(
-    "https://mattblanco.me/itp-nature-of-code/05_particles/data/DidactGothic-Regular.ttf",
+    "https://mattblanco.me/itp-nature-of-code/04_oscillators/assets/MonaspaceKrypton-Regular.otf",
   );
 
   text = loadStrings("https://mattblanco.me/itp-nature-of-code/05_particles/data/text.txt");
