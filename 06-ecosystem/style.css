@@ -1,0 +1,27 @@
+@font-face {
+  font-family: monaspaceKrypton; /* set name */
+  src: url('https://mattblanco.me/itp-nature-of-code/04_oscillators/assets/MonaspaceKrypton-Regular.otf');
+}
+
+* {
+  font-family: monaspaceKrypton, "Helvetica";
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+canvas {
+  display: block;
+}
+
+input[type=checkbox], span  {
+  position: absolute;
+  top: 4rem;
+  left: 3rem;
+}
+span {
+  top:4.05rem;
+  left: 4.5rem;
+}
